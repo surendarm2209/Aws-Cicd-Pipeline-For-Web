@@ -47,6 +47,14 @@ export const config = {
         timeout: 60000
     },
 
+       /** ✅ Ensure Allure report directory exists before session starts */
+    beforeSession: function () {
+        const allureDir = join(process.cwd(), 'reports', 'allure-results');
+        if (!fs.existsSync(allureDir)) {
+            fs.mkdirSync(allureDir, { recursive: true });
+        }
+    },
+    
     /** ✅ FIX: Ensure `browser` is fully initialized before running tests */
     before: function () {
         global.browser = browser;
