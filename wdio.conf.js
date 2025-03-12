@@ -5,20 +5,6 @@ export const config = {
     runner: 'local',
     specs: [join(process.cwd(), 'tests', 'specs', '*.js')],
 
-    // maxInstances: 1,
-
-    // capabilities: [{
-    //     browserName: 'chrome',
-    //     'goog:chromeOptions': {
-    //         args: [
-    //             '--headless',
-    //             '--disable-gpu',
-    //             '--no-sandbox',
-    //             '--disable-dev-shm-usage',
-    //             '--window-size=1920,1080'
-    //         ]
-    //     }
-    // }],
     capabilities: [
     {
     maxInstances: 1,
@@ -83,4 +69,45 @@ export const config = {
         console.log('✅ WebdriverIO Tests Completed!');
     }
 };
+
+// describe('WebdriverIO Test', () => {
+//     before(async () => {
+//         await browser.url('https://your-ecommerce-site.com');
+//     });
+
+//     it('should log in successfully', async () => {
+//         const username = await $('#username');
+//         const password = await $('#password');
+//         const loginButton = await $('#login');
+
+//         await username.setValue('testuser');
+//         await password.setValue('password123');
+//         await loginButton.click();
+
+//         await browser.pause(2000); // Adjust as needed
+
+//         // CAPTCHA Handling (if applicable)
+//         const captchaElement = await $('#captcha');
+//         if (await captchaElement.isDisplayed()) {
+//             console.warn('CAPTCHA detected! Manual intervention required.');
+//             await browser.debug();
+//         }
+
+//         const dashboard = await $('#dashboard');
+//         await expect(dashboard).toBeExisting();
+//     });
+
+//     it('should take a screenshot on failure', async () => {
+//         try {
+//             await browser.url('https://your-ecommerce-site.com/product/123');
+//             const addToCart = await $('#add-to-cart');
+//             await addToCart.click();
+//             const cart = await $('#cart');
+//             await expect(cart).toBeExisting();
+//         } catch (error) {
+//             await browser.saveScreenshot('./error-screenshot.png');
+//             throw error;
+//         }
+//     });
+// });
 
