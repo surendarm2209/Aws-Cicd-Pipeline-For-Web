@@ -20,13 +20,19 @@ export const config = {
     //     }
     // }],
     capabilities: [
-     {
-      maxInstances: 1,
-      browserName: "chrome",
-      "goog:chromeOptions": {
-        args: ["--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"],
-          },
-        },
+    {
+    maxInstances: 1,
+    browserName: 'chrome',
+    'goog:chromeOptions': {
+      args: [
+        '--headless',
+        '--no-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-gpu',
+        '--window-size=1920,1080'
+          ]
+        }
+      }
     ],
 
     logLevel: 'info',
