@@ -25,15 +25,16 @@ export const config = {
     browserName: 'chrome',
     'goog:chromeOptions': {
       args: [
-        '--headless',               // Run in headless mode
+        '--headless',               // Run without GUI
         '--disable-gpu',            // Disable GPU acceleration
         '--no-sandbox',             // Bypass OS security model
-        '--disable-dev-shm-usage',  // Overcome limited resource issues
-        '--window-size=1920,1080'   // Set screen size
-        ]
+        '--disable-dev-shm-usage',  // Prevent shared memory issue
+        '--window-size=1920,1080'   // Set proper window size
+          ]
+        }
       }
-     }
-   ],
+    ]
+
     logLevel: 'info',
     bail: 0,
     baseUrl: 'https://www.saucedemo.com',
