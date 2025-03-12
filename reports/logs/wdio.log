@@ -1,0 +1,12 @@
+2025-03-12T02:13:54.079Z INFO @wdio/cli:launcher: Run onPrepare hook
+2025-03-12T02:13:54.289Z INFO @wdio/utils: Setting up browser driver for: chrome@stable
+2025-03-12T02:13:54.290Z INFO @wdio/utils: Setting up browser binaries for: chrome@stable
+2025-03-12T02:13:54.375Z INFO webdriver: Using Chromedriver v134.0.6998.45 from cache directory /var/folders/hd/c9rx_x3j6dxcfkmk3qk0w0zm0000gp/T
+2025-03-12T02:13:54.416Z INFO @wdio/cli:launcher: Run onWorkerStart hook
+2025-03-12T02:13:54.416Z INFO @wdio/local-runner: Start worker 0-0 with arg: run wdio.conf.js
+2025-03-12T02:13:56.856Z INFO @wdio/cli:launcher: Run onWorkerEnd hook
+2025-03-12T02:13:56.856Z INFO @wdio/cli:launcher: Run onWorkerStart hook
+2025-03-12T02:13:56.856Z INFO @wdio/local-runner: Start worker 0-1 with arg: run wdio.conf.js
+2025-03-12T02:13:59.124Z INFO @wdio/cli:launcher: Run onWorkerEnd hook
+2025-03-12T02:13:59.125Z INFO @wdio/local-runner: Shutting down spawned worker
+2025-03-12T02:13:59.378Z INFO @wdio/local-runner: Waiting for 0 to shut down gracefully
