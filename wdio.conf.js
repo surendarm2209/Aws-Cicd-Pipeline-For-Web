@@ -20,20 +20,14 @@ export const config = {
     //     }
     // }],
     capabilities: [
-    {
-    maxInstances: 1,
-    browserName: 'chrome',
-    'goog:chromeOptions': {
-      args: [
-        '--headless',               // Run without GUI
-        '--disable-gpu',            // Disable GPU acceleration
-        '--no-sandbox',             // Bypass OS security model
-        '--disable-dev-shm-usage',  // Prevent shared memory issue
-        '--window-size=1920,1080'   // Set proper window size
-          ]
-        }
-      }
-    ]
+     {
+      maxInstances: 1,
+      browserName: "chrome",
+      "goog:chromeOptions": {
+        args: ["--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"],
+          },
+        },
+    ],
 
     logLevel: 'info',
     bail: 0,
