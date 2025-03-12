@@ -5,20 +5,29 @@ export const config = {
     runner: 'local',
     specs: [join(process.cwd(), 'tests', 'specs', '*.js')],
 
-    maxInstances: 1,
+    // maxInstances: 1,
 
-    capabilities: [{
+    // capabilities: [{
+    //     browserName: 'chrome',
+    //     'goog:chromeOptions': {
+    //         args: [
+    //             '--headless',
+    //             '--disable-gpu',
+    //             '--no-sandbox',
+    //             '--disable-dev-shm-usage',
+    //             '--window-size=1920,1080'
+    //         ]
+    //     }
+    // }],
+    capabilities: [
+    {
+        maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: [
-                '--headless',
-                '--disable-gpu',
-                '--no-sandbox',
-                '--disable-dev-shm-usage',
-                '--window-size=1920,1080'
-            ]
-        }
-    }],
+            args: ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
+         },
+      },
+    ],
 
     logLevel: 'info',
     bail: 0,
