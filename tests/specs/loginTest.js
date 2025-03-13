@@ -17,10 +17,10 @@ const { expect } = require('chai');
 
 describe('Login Test', () => {
   it('should login successfully', async () => {
-    await browser.url('/login'); // Navigate to the login page
-    await $('#username').setValue('testuser'); // Enter username
-    await $('#password').setValue('testpassword'); // Enter password
-    await $('button[type="submit"]').click(); // Click the submit button
-    await expect($('.welcome-message')).toHaveText('Welcome, testuser!'); // Assert welcome message
+    await browser.url('/login');
+    await $('#username').setValue('testuser');
+    await $('#password').setValue('testpassword');
+    await $('button[type="submit"]').click();
+    await expect($('.welcome-message')).toHaveText('Welcome, testuser!');
   });
 });
