@@ -1,6 +1,6 @@
 export const config = {
   runner: 'local',
-  specs: ['./test/specs/*.js'],
+  specs: ['./tests/specs/*.js'],
   maxInstances: 1,
   capabilities: [{
     browserName: 'chrome',
