@@ -1,4 +1,4 @@
-// // const { config } = require('@wdio/cli').default;
+//  const { config } = require('@wdio/cli').default;
 // // const allure = require('allure-commandline');
 
 // // export const config = {
