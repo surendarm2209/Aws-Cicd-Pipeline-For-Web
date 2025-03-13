@@ -15,7 +15,7 @@ export const config = {
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
   framework: 'mocha',
-  reporters: ['allure', { outputDir: './reports/allure-results' }]],
+  reporters: ['allure', { outputDir: './reports/allure-results' }],
   mochaOpts: {
     ui: 'bdd',
     timeout: 60000,
