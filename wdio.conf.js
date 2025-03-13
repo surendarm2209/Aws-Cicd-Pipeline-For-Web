@@ -1,113 +1,57 @@
-import { join } from 'path';
-import { remote } from 'webdriverio';
+exports.config = {
+  // ====================
+  // Runner Configuration
+  // ====================
+  runner: 'local',
 
-export const config = {
-    runner: 'local',
-    specs: [join(process.cwd(), 'tests', 'specs', '*.js')],
+  // ==================
+  // Specify Test Files
+  // ==================
+  specs: ['./test/specs/**/*.js'],
 
-    capabilities: [
+  // ============
+  // Capabilities
+  // ============
+  capabilities: [
     {
-    maxInstances: 1,
-    browserName: 'chrome',
-    'goog:chromeOptions': {
-      args: [
-        '--headless',
-        '--no-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-gpu',
-        '--window-size=1920,1080'
-          ]
-        }
-      }
-    ],
-
-    logLevel: 'info',
-    bail: 0,
-    baseUrl: 'https://www.saucedemo.com',
-    waitforTimeout: 10000,
-    connectionRetryTimeout: 120000,
-    connectionRetryCount: 3,
-
-    services: [['chromedriver', {
-        chromedriverCustomPath: join(process.cwd(), 'drivers', 'chromedriver')
-    }]],
-
-    reporters: ['spec',
-        ['allure', {
-            outputDir: join(process.cwd(), 'reports', 'allure-results'),
-            disableWebdriverStepsReporting: true,
-            disableWebdriverScreenshotsReporting: false,
-        }]
-    ],
-
-    outputDir: join(process.cwd(), 'reports', 'logs'),
-
-    framework: 'mocha',
-    mochaOpts: {
-        ui: 'bdd',
-        timeout: 60000
+      maxInstances: 1,
+      browserName: 'chrome',
+      'goog:chromeOptions': {
+        args: [
+          '--headless', // Run in headless mode
+          '--disable-gpu', // Disable GPU for headless mode
+          '--no-sandbox', // Disable sandbox for CI environments
+          '--disable-dev-shm-usage', // Avoid /dev/shm usage issues
+          '--window-size=1920,1080', // Set window size
+        ],
+      },
     },
+  ],
 
-       /** ✅ Ensure Allure report directory exists before session starts */
-    beforeSession: function () {
-        const allureDir = join(process.cwd(), 'reports', 'allure-results');
-        if (!fs.existsSync(allureDir)) {
-            fs.mkdirSync(allureDir, { recursive: true });
-        }
-    },
-    
-    /** ✅ FIX: Ensure `browser` is fully initialized before running tests */
-    before: function () {
-        global.browser = browser;
-    },
+  // ===================
+  // Test Configurations
+  // ===================
+  logLevel: 'info', // Set log level (options: trace, debug, info, warn, error, silent)
+  bail: 0, // Stop test execution after X failures
+  baseUrl: 'http://localhost', // Base URL for your application
+  waitforTimeout: 10000, // Default timeout for all waitFor* commands
+  connectionRetryTimeout: 90000, // Timeout for retrying connection to browser
+  connectionRetryCount: 3, // Number of retries for connection
+  services: ['chromedriver'], // Use Chromedriver service
+  framework: 'mocha', // Use Mocha as the test framework
+  reporters: ['spec'], // Use Spec reporter for test output
+  mochaOpts: {
+    ui: 'bdd', // Behavior-Driven Development interface
+    timeout: 60000, // Timeout for test execution
+  },
 
-    onPrepare: function () {
-        console.log('🚀 Starting WebdriverIO Tests...');
-    },
-
-    onComplete: function () {
-        console.log('✅ WebdriverIO Tests Completed!');
-    }
+  // =====
+  // Hooks
+  // =====
+  onPrepare: function (config, capabilities) {
+    console.log('Starting Chromedriver...');
+  },
+  onComplete: function (exitCode, config, capabilities, results) {
+    console.log('Tests completed!');
+  },
 };
-
-// describe('WebdriverIO Test', () => {
-//     before(async () => {
-//         await browser.url('https://your-ecommerce-site.com');
-//     });
-
-//     it('should log in successfully', async () => {
-//         const username = await $('#username');
-//         const password = await $('#password');
-//         const loginButton = await $('#login');
-
-//         await username.setValue('testuser');
-//         await password.setValue('password123');
-//         await loginButton.click();
-
-//         await browser.pause(2000); // Adjust as needed
-
-//         // CAPTCHA Handling (if applicable)
-//         const captchaElement = await $('#captcha');
-//         if (await captchaElement.isDisplayed()) {
-//             console.warn('CAPTCHA detected! Manual intervention required.');
-//             await browser.debug();
-//         }
-
-//         const dashboard = await $('#dashboard');
-//         await expect(dashboard).toBeExisting();
-//     });
-
-//     it('should take a screenshot on failure', async () => {
-//         try {
-//             await browser.url('https://your-ecommerce-site.com/product/123');
-//             const addToCart = await $('#add-to-cart');
-//             await addToCart.click();
-//             const cart = await $('#cart');
-//             await expect(cart).toBeExisting();
-//         } catch (error) {
-//             await browser.saveScreenshot('./error-screenshot.png');
-//             throw error;
-//         }
-//     });
-// });
-
