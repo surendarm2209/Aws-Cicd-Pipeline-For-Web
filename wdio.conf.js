@@ -1,57 +1,41 @@
 exports.config = {
-  // ====================
-  // Runner Configuration
-  // ====================
   runner: 'local',
-
-  // ==================
-  // Specify Test Files
-  // ==================
-  specs: ['./tests/specs/*.js'],
-
-  // ============
-  // Capabilities
-  // ============
-  capabilities: [
-    {
-      maxInstances: 1,
-      browserName: 'chrome',
-      'goog:chromeOptions': {
-        args: [
-          '--headless', // Run in headless mode
-          '--disable-gpu', // Disable GPU for headless mode
-          '--no-sandbox', // Disable sandbox for CI environments
-          '--disable-dev-shm-usage', // Avoid /dev/shm usage issues
-          '--window-size=1920,1080', // Set window size
-        ],
-      },
+  specs: ['./test/specs/**/*.js'],
+  exclude: [],
+  maxInstances: 10,
+  capabilities: [{
+    maxInstances: 5,
+    browserName: 'chrome',
+    'goog:chromeOptions': {
+      args: ['--headless', '--disable-gpu', '--window-size=1920,1080'],
     },
+  }],
+  logLevel: 'info',
+  bail: 0,
+  baseUrl: 'https://example.com',
+  waitforTimeout: 10000,
+  connectionRetryTimeout: 90000,
+  connectionRetryCount: 3,
+  services: ['chromedriver'], // Automatically manage ChromeDriver
+  framework: 'mocha',
+  reporters: [
+    'spec',
+    [
+      'allure',
+      {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+      },
+    ],
   ],
-
-  // ===================
-  // Test Configurations
-  // ===================
-  logLevel: 'info', // Set log level (options: trace, debug, info, warn, error, silent)
-  bail: 0, // Stop test execution after X failures
-  baseUrl: 'http://localhost', // Base URL for your application
-  waitforTimeout: 10000, // Default timeout for all waitFor* commands
-  connectionRetryTimeout: 90000, // Timeout for retrying connection to browser
-  connectionRetryCount: 3, // Number of retries for connection
-  services: ['chromedriver'], // Use Chromedriver service
-  framework: 'mocha', // Use Mocha as the test framework
-  reporters: ['spec'], // Use Spec reporter for test output
   mochaOpts: {
-    ui: 'bdd', // Behavior-Driven Development interface
-    timeout: 60000, // Timeout for test execution
+    ui: 'bdd',
+    timeout: 60000,
   },
-
-  // =====
-  // Hooks
-  // =====
-  onPrepare: function (config, capabilities) {
-    console.log('Starting Chromedriver...');
-  },
-  onComplete: function (exitCode, config, capabilities, results) {
-    console.log('Tests completed!');
+  afterTest: function (test, context, { error, result, duration, passed, retries }) {
+    if (error) {
+      browser.takeScreenshot();
+    }
   },
 };
