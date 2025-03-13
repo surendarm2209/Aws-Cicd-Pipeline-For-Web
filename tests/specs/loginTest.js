@@ -33,7 +33,9 @@ describe('Automation Exercise Site', () => {
     await browser.url('/');
     const title = await browser.getTitle();
     console.log(`Page Title: ${title}`);
-    expect(title).toContain('Automation Exercise');
+    // expect(title).toContain('Automation Exercise');
+    expect(title).to.contain('Automation Exercise');
+
   });
 });
 
