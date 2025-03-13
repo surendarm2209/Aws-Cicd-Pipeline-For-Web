@@ -13,7 +13,7 @@
 // //   }],
 // //   logLevel: 'info',
 // //   bail: 0,
-// //   baseUrl: 'https://automationexercise.com/',
+// ///   baseUrl: 'https://automationexercise.com/',
 // //   waitforTimeout: 10000,
 // //   connectionRetryTimeout: 90000,
 // //   connectionRetryCount: 3,
