@@ -27,9 +27,9 @@ const { expect } = require('chai');
 
 describe('Search Test', () => {
   it('should display search results', async () => {
-    await browser.url('/'); // Navigate to the homepage
-    await $('#search-box').setValue('WebdriverIO'); // Enter search term
-    await $('button[type="submit"]').click(); // Click the search button
-    await expect($('.search-results')).toBeDisplayed(); // Assert search results are displayed
+    await browser.url('/');
+    await $('#search-box').setValue('WebdriverIO');
+    await $('button[type="submit"]').click();
+    await expect($('.search-results')).toBeDisplayed();
   });
 });
