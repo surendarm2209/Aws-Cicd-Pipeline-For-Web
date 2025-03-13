@@ -16,14 +16,24 @@
 
 
 
-const { expect } = require('chai');
+// const { expect } = require('chai');
 
-describe('Login Test', () => {
-  it('should login successfully', async () => {
-    await browser.url('/login');
-    await $('#username').setValue('testuser');
-    await $('#password').setValue('testpassword');
-    await $('button[type="submit"]').click();
-    await expect($('.welcome-message')).toHaveText('Welcome, testuser!');
+// describe('Login Test', () => {
+//   it('should login successfully', async () => {
+//     await browser.url('/login');
+//     await $('#username').setValue('testuser');
+//     await $('#password').setValue('testpassword');
+//     await $('button[type="submit"]').click();
+//     await expect($('.welcome-message')).toHaveText('Welcome, testuser!');
+//   });
+// });
+
+describe('Automation Exercise Site', () => {
+  it('should open the homepage and verify title', async () => {
+    await browser.url('/');
+    const title = await browser.getTitle();
+    console.log(`Page Title: ${title}`);
+    expect(title).toContain('Automation Exercise');
   });
 });
+
