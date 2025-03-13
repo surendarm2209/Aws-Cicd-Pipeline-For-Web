@@ -2,8 +2,9 @@
   "name": "webdriverio-project",
   "version": "1.0.0",
   "scripts": {
-    "test": "wdio wdio.conf.js"
-  },
+  "test": "wdio wdio.conf.js",
+  "install-chromedriver": "npm install chromedriver@latest"
+    }
   "dependencies": {
     "@wdio/cli": "^8.0.0",
     "@wdio/local-runner": "^8.0.0",
