@@ -96,9 +96,20 @@ export const config = {
   specs: ['./tests/specs/*.js'],
   maxInstances: 1,
   capabilities: [{
-    browserName: 'chrome',
-    'goog:chromeOptions': {
-      args: ['--headless', '--disable-gpu', '--window-size=1920,1080'],
+  browserName: 'chrome',
+  'goog:chromeOptions': {
+    args: [
+      '--headless', 
+      '--disable-gpu', 
+      '--window-size=1920,1080',
+      '--no-sandbox', 
+      '--disable-dev-shm-usage',
+      '--disable-software-rasterizer',
+      '--disable-extensions',
+      '--disable-infobars',
+      '--disable-blink-features=AutomationControlled',
+      `--user-data-dir=/tmp/chrome-user-data-${Date.now()}`  // Use a unique user-data-dir
+      ],
     },
   }],
   logLevel: 'info',
